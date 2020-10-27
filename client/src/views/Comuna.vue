@@ -56,18 +56,20 @@
       </div>
       <div class="column is-3"></div>
     </div>
-    <Modal :isComponentModalActive='isComponentModalActive'/>
+    <b-modal :active.sync='isComponentModalActive' has-modal-card='' trap-focus='' aria-role='dialog' aria-modal=''>
+      <w-claim-modal v-if="isComponentModalActive" />
+    </b-modal>
   </div>
 </template>D
 
 <script>
 import Vuex from 'vuex';
-import Modal from '@/components/Modal.vue';
+import WClaimModal from '@/components/Modal.vue';
 
 export default {
   name: 'Comuna',
   components: {
-    Modal,
+    WClaimModal,
   },
   data() {
     return {
