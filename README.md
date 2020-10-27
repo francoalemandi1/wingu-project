@@ -2,13 +2,15 @@
 
 Open the project, then follow the next steps:
 
-SERVER
+npm i
+
+///SERVER///
 
 cd server
 
 npm run dev
 
-CLIENT
+///CLIENT///
 
 cd client
 
