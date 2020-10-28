@@ -10,6 +10,8 @@ npm i
 
 cd server
 
+npm i nodemon
+
 npm run dev
 
 # client
