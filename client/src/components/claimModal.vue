@@ -28,8 +28,8 @@
         <b-select placeholder="Seleccioná tu barrio"
           v-model='communeAreaSelected'>
           <option
-            v-for="(communeArea) in communeAreas"
-            :key="communeArea.id"
+            v-for="(communeArea, index) in communeAreas"
+            :key="communeArea.id+'id'+index"
             >
             {{ communeArea }}
           </option>

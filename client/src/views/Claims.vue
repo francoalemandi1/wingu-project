@@ -10,7 +10,7 @@
     <div class="columns mt-6">
       <div class="column is-2"></div>
       <div class="column is-8">
-        <article class="media"  v-for="communeClaim in communeClaimsById" :key='communeClaim.area'>
+        <article class="media"  v-for="(communeClaim, index) in communeClaimsById" :key="communeClaim.id+'id'+index">
           <figure class="media-left">
             <p class="image is-64x64">
               {{ communeClaim.area }}

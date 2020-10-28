@@ -10,7 +10,7 @@
     <div class="columns mt-6">
       <div class="column is-2"></div>
       <div class="column is-8">
-        <article class="media"  v-for="filteredClaim in filteredClaims" :key='filteredClaim.id'>
+        <article class="media"  v-for="(filteredClaim, index) in filteredClaims" :key="filteredClaim.id+'id'+index">
           <figure class="media-left">
             <p class="image is-64x64">
               {{ filteredClaim.area }}
@@ -57,9 +57,6 @@ export default {
     },
   created() {
     this.getCommuneClaimsById(this.$route.params.id);
-  },
-  beforeDestroy() {
-    this.getCommuneClaimsById();
   },
   methods: {
     ...Vuex.mapActions(['getCommuneClaimsById']),
