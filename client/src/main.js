@@ -9,7 +9,10 @@ import VueAxios from 'vue-axios';
 import '@fortawesome/fontawesome-free/css/all.css';
 import '@fortawesome/fontawesome-free/js/all.js';
 import { VueSpinners } from '@saeris/vue-spinners'
+import VuePaginate from 'vue-paginate';
 
+
+Vue.use(VuePaginate)
 Vue.use(VueSpinners)
 Vue.use(Bulma);
 Vue.use(Buefy);

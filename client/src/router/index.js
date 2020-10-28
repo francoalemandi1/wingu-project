@@ -1,8 +1,9 @@
 import Vue from "vue";
 import VueRouter from "vue-router";
-import Comuna from '@/views/Comuna.vue';
-import communesList from '@/components/communesList.vue';
-import Reclamos from '@/views/Reclamos.vue';
+import CommuneFiltered from '@/views/CommuneFiltered.vue';
+import CommunesList from '@/components/CommunesList.vue';
+import Claims from '@/views/Claims.vue';
+import SearchClaim from '@/components/searchClaim.vue';
 
 Vue.use(VueRouter);
 
@@ -10,18 +11,23 @@ const routes = [
   {
     path: "/",
     name: "Home",
-    component: communesList
+    component: CommunesList
   },
   {
     path: "/comuna/:id",
-    name: "Comuna",
-    component: Comuna,
+    name: "CommuneFiltered",
+    component: CommuneFiltered,
   },
   {
     path: "/comuna/reclamos/:id",
-    name: "Reclamos",
-    component: Reclamos,
+    name: "Claims",
+    component: Claims,
   },
+  {
+    path: "/search/:id",
+    name: "Search",
+    component: SearchClaim,
+  }
 ];
 
 const router = new VueRouter({

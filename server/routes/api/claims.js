@@ -5,12 +5,6 @@ const upload = multer( { dest: 'uploads/'} ); // Uploads sería la carpeta donde
 
 const router = express.Router();
 
-//Get claims
-// router.get('/', async (req, res) => {
-//   const claims = await loadClaimsCollection();
-//   res.send(await claims.find({}).toArray());
-// });
-
 // Get claims by id
 router.get('/:id', async (req, res) => {
   const claims = await loadClaimsCollection();
@@ -25,6 +19,7 @@ router.post('/', upload.single('image') , async (req, res) => {
     description: req.body.description,
     id: req.body.id,
     postId: req.body.postId,
+    area: req.body.area
   });
   res.status(201).send();
 })

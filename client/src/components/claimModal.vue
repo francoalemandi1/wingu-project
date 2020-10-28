@@ -11,7 +11,7 @@
       <b-field label="Título del reclamo">
         <b-input
           type="text"
-          v-model='title'
+          v-model='claimTitle'
           required
           style='height: 50px !important;'>
         </b-input>
@@ -25,11 +25,13 @@
         </b-input>
       </b-field>
       <b-field label="Barrio">
-        <b-select placeholder="Seleccioná tu barrio">
+        <b-select placeholder="Seleccioná tu barrio"
+          v-model='communeAreaSelected'>
           <option
-            v-for="(commune, index) in communeAreas"
-            :key="index">
-            {{ commune }}
+            v-for="(communeArea) in communeAreas"
+            :key="communeArea.id"
+            >
+            {{ communeArea }}
           </option>
         </b-select>
     </b-field>
@@ -37,20 +39,20 @@
         <b-input
           maxlength="200" 
           type="textarea"
-          v-model='communeDescription'
+          v-model='claimDescription'
           required></b-input>
       </b-field>
       <b-field class="file">
-        <b-upload v-model="file" expanded multiple>
+        <b-upload v-model="imageUploaded" expanded multiple>
           <a class="button is-colored-button is-fullwidth">
-            <b-icon icon="upload"></b-icon>
-            <span class='image-text'>{{ file.name || "Ingresá la imagen del reclamo"}}</span>
+            <i class="fas fa-upload" style='color: white; position: relative; left: -1vh;'></i>
+            <span class='image-text'>{{ imageUploaded.name || "Ingresá la imagen del reclamo"}}</span>
           </a>
         </b-upload>
       </b-field>
       <div class='tags'>
-        <span class='tag' v-for="(file, index) in file" :key="index">
-          {{file.name}}
+        <span class='tag' v-for="(imageUploaded, index) in imageUploaded" :key="index">
+          {{imageUploaded.name}}
           <button class="delete is-small is-colored-button" type="button" @click="deleteDropFile(index)"></button>
         </span>
       </div>
@@ -69,13 +71,12 @@ export default {
   name: 'Modal',
   data() {
     return {
-      title: '',
+      claimTitle: '',
       image: '',
-      communeDescription: '',
-      file: [],
-      dropFiles: [],
-      data: [],
+      claimDescription: '',
+      imageUploaded: [],
       isComponentModalActive: true,
+      communeAreaSelected: '',
     };
   },
   computed: {
@@ -87,20 +88,21 @@ export default {
   methods: {
     ...Vuex.mapActions(['insertClaim']),
     saveClaim() {
-      if (this.title !== '' && this.communeDescription !== '' && this.communeDescription !== '') {
+      if (this.claimTitle !== '' && this.claimDescription !== '' && this.communeAreaSelected !== '' && this.imageUploaded.length !== 0) {
         // Método que guarda  el reclamo. El objeto que se pasa como parámetro son los key que me pide el backend para hacer el guardado de datos. insertClaim es el método que hace la petición al backend.
         this.insertClaim({
-          title: this.title,
-          description: this.communeDescription,
+          title: this.claimTitle,
+          description: this.claimDescription,
           date: '',
           time: '',
           image: this.image,
           postId: this.$route.params.id,
-          id: ''
+          id: '',
+          area: this.communeAreaSelected,
         });
         this.$buefy.dialog.alert({
           title: 'Reclamo procesado',
-          message: 'Gracias! tu reclamo ha sido registrado correctamente.',
+          message: 'Gracias! Tu reclamo ha sido registrado correctamente.',
           confirmText: 'Cerrar',
           type: 'is-success',
          });
@@ -123,7 +125,7 @@ export default {
       this.$parent.close();
     },
     deleteDropFile(index) {
-      this.file.splice(index, 1);
+      this.imageUploaded.splice(index, 1);
     }
   }
 }

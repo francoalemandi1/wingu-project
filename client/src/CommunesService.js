@@ -2,9 +2,9 @@ import axios from 'axios'
 
 const url = 'http://localhost:5000/api/posts';
 
-class PostService {
-  //Get Posts
-  static getPosts() {
+class CommunesService {
+  //Get communes list
+  static getCommunesList() {
     /*eslint-disable */
     return new Promise(async (resolve, reject) => {
     /*eslint-enable */
@@ -17,16 +17,10 @@ class PostService {
       }
     })
   }
-  // Create Post
-  static insertPost(text) {
-    return axios.post(url, {
-      text,
-    })
-  }
-  // Get commune by id
-  static getCommune(id) {
+  // Get a commune by id
+  static getCommuneByid(id) {
     return axios.get(`${url}/${id}`);
   }
 }
 
-export default PostService;
+export default CommunesService;

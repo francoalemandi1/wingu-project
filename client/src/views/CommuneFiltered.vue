@@ -64,7 +64,7 @@
 
 <script>
 import Vuex from 'vuex';
-import WClaimModal from '@/components/Modal.vue';
+import WClaimModal from '@/components/claimModal.vue';
 
 export default {
   name: 'Comuna',
@@ -86,7 +86,7 @@ export default {
     this.getCommuneById(this.$route.params.id);
   },
   beforeDestroy() {
-    this.getCommuneById(this.$route.params.id);
+    this.getCommuneById();
   },
   methods: {
     ...Vuex.mapActions(['getCommuneById']),

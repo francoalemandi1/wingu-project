@@ -3,8 +3,12 @@
     <section class="hero">
       <div class="hero-body has-text-centered">
         <div class="container">
+          <div class="columns">
+            <div class="column is-6">
+            </div>
+          </div>
           <h1 class="title">
-            Elegí tu comuna
+            Elegí tu comuna <br /> y cargá tu reclamo
           </h1>
         </div>
       </div>
@@ -26,19 +30,19 @@
       </div>
     </div>
     <div class="card-container">
-      <div class="columns" v-for='(result, index) in results' :key='index'>
-        <div class="column is-3 is-column-commune" v-for='(commune, index) in result' :key='index'>
-          <div class="card mb-6" @click='goToCommune(commune.id)'>
+      <div class="columns is-multiline" >
+        <div class="column is-3 is-column-commune" v-for='(filteredCommune, index) in filteredCommunes' :key='index'>
+          <div class="card mb-6" @click='goToCommune(filteredCommune.id)'>
             <div class="card-image">
               <figure class="image is-3by2">
-                <img :src="commune.image">
+                <img :src="filteredCommune.image">
               </figure>
             </div>
             <div class="card-content">
               <div class="media">
                 <div class="media-content has-text-centered">
-                  <p class="title is-4">{{ commune.name }}</p>
-                  <p class="subtitle is-6">{{ commune.description }}</p>
+                  <p class="title is-4">{{ filteredCommune.name }}</p>
+                  <p class="subtitle is-6">{{ filteredCommune.description }}</p>
                 </div>
               </div>
             </div>
@@ -59,12 +63,12 @@ export default {
     };
   },
   computed: {
-    ...Vuex.mapState(['communes', 'results']),
+    ...Vuex.mapState(['communes']),
     filteredCommunes() {
       if(this.communeFilter === '') {
-        return this.result;
+        return this.communes;
       } else {
-        return this.result.filter(a => 
+        return this.communes.filter(a => 
           a.name.toLowerCase().includes(this.communeFilter.toLowerCase()) ||
           a.description.toLowerCase().includes(this.communeFilter.toLowerCase())
         )
@@ -72,16 +76,16 @@ export default {
     },
   },
   mounted() {
-    this.getCommunes();
+    this.getCommunesList();
   },
   methods: {
-    ...Vuex.mapActions(['getCommunes']),
+    ...Vuex.mapActions(['getCommunesList']),
     ...Vuex.mapMutations(['obtainCommunes']),
     goToCommune(id) {
       this.$router.push(`comuna/${id}`)
-    }
+      }
+    },
   }
-}
 </script>
 
 <style scoped>

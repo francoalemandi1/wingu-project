@@ -15,6 +15,13 @@ router.get('/:id', async (req, res) => {
   res.send(await commune.findOne({ id: req.params.id } ));
 })
 
+// Get a commune by filter
+router.get('/:id', async (req, res) => {
+  const communeFilter = await loadPostsCollection();
+  res.send(await communeFilter.findOne({ description: req.params.description }).toArray());
+})
+
+
 async function loadPostsCollection() {
   const client = await mongodb.MongoClient.connect
   ('mongodb+srv://francoalemandi:Digweed1320@cluster0.x5quc.mongodb.net/<dbname>?retryWrites=true&w=majority', {
