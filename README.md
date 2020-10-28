@@ -2,21 +2,21 @@
 
 Open the project, then follow the next steps:
 
-# ///Root of the project///
+# Root of the project
 
 npm i
 
-# ///SERVER///
+# server
 
 cd server
 
 npm run dev
 
-# ///CLIENT///
+# client
 
 cd client
 
-npm install
+npm i
 
 npm run serve
 
