@@ -75,7 +75,7 @@ export default {
       }
     },
   },
-  mounted() {
+  created() {
     this.getCommunesList();
   },
   methods: {
@@ -110,6 +110,10 @@ export default {
   }
   .card-container {
     margin: 20px;
+  }
+  .columns {
+    margin-left: 0;
+    margin-right: 0;
   }
 }
 </style>

@@ -30,31 +30,36 @@ export default {
 </script>
 
 <style scoped>
-.is-header {
-  position: relative;
-  left: -5px;
-}
 .level {
   cursor: pointer;
 }
 .subtitle {
   display: flex;
 }
-strong{
+strong {
   margin: 8px;
+}
+img {
+  position: relative;
+  top: 1rem;
 }
 @media (max-width: 600px) {
   .container {
     display: flex;
     justify-content: center;
     text-align: center;
-
-    position: relative;
-    left: -3vh;
+  }
+  .level-item {
+    margin: 0;
   }
   img {
     position: relative;
-    left: 4vh;
+    left: 3vh;
+    top: 0;
+  }
+  .columns {
+    margin-left: 0;
+    margin-right: 0;
   }
 }
 </style>

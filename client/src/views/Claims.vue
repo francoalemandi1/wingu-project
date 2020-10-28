@@ -46,11 +46,11 @@ export default {
   computed: {
     ...Vuex.mapState(['communeClaimsById']),
   },
-  mounted() {
+  created() {
     this.getCommuneClaimsById(this.$route.params.id);
   },
   beforeDestroy() {
-    this.getCommuneClaimsById();
+    this.getCommuneClaimsById()
   },
   methods: {
     ...Vuex.mapActions(['getCommuneClaimsById']),
@@ -87,9 +87,17 @@ h2.subtitle {
   align-items: unset !important;
   justify-content: unset !important;
 }
+.is-input-filter {
+  position: relative;
+  top: 1.5rem;
+}
 @media (max-width: 600px) {
   .media {
     margin: 10px;
+  }
+  .columns {
+    margin-left: 0;
+    margin-right: 0;
   }
 }
 </style>

@@ -55,7 +55,7 @@ export default {
         a.description.toLowerCase().includes(this.inputFilter.toLowerCase())
       )}
     },
-  mounted() {
+  created() {
     this.getCommuneClaimsById(this.$route.params.id);
   },
   methods: {
@@ -91,6 +91,10 @@ export default {
 @media (max-width: 600px) {
   .media {
     margin: 10px;
+  }
+  .columns {
+    margin-left: 0;
+    margin-right: 0;
   }
 }
 </style>

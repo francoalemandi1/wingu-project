@@ -82,7 +82,7 @@ export default {
       return 'background: url(' + this.backgroundImage + ')';
     },
   },
-  mounted() {
+  created() {
     this.getCommuneById(this.$route.params.id);
   },
   beforeDestroy() {
@@ -139,12 +139,9 @@ export default {
   background-position: center center !important;
 }
 @media (max-width: 600px) {
-  .fields.has-addons,
-  .subtitle {
-    margin-left: 10px;
-  }
-  .hero {
-    margin: 10px;
+  .columns {
+    margin-left: 0;
+    margin-right: 0;
   }
 }
 </style>
