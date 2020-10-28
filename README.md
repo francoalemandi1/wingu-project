@@ -2,17 +2,17 @@
 
 Open the project, then follow the next steps:
 
-///Root of the project///
+# ///Root of the project///
 
 npm i
 
-///SERVER///
+# ///SERVER///
 
 cd server
 
 npm run dev
 
-///CLIENT///
+# ///CLIENT///
 
 cd client
 
