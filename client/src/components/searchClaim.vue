@@ -1,5 +1,5 @@
 <template>
-  <div class="container">
+  <div class="section-claim">
     <claim-header />
     <div class="columns">
       <div class="column is-2"></div>
