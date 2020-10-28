@@ -55,8 +55,11 @@ export default {
         a.description.toLowerCase().includes(this.inputFilter.toLowerCase())
       )}
     },
-  created() {
+  mounted() {
     this.getCommuneClaimsById(this.$route.params.id);
+  },
+  beforeDestroy() {
+    this.getCommuneClaimsById(this.$route.params.id)
   },
   methods: {
     ...Vuex.mapActions(['getCommuneClaimsById']),

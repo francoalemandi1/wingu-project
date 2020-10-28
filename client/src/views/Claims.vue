@@ -46,11 +46,11 @@ export default {
   computed: {
     ...Vuex.mapState(['communeClaimsById']),
   },
-  created() {
+  mounted() {
     this.getCommuneClaimsById(this.$route.params.id);
   },
   beforeDestroy() {
-    this.getCommuneClaimsById()
+    this.getCommuneClaimsById(this.$route.params.id)
   },
   methods: {
     ...Vuex.mapActions(['getCommuneClaimsById']),

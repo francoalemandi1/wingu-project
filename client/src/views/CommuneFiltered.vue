@@ -87,9 +87,10 @@ export default {
   },
   beforeDestroy() {
     this.getCommuneById();
+    this.getCommuneClaimsById(this.$route.params.id);
   },
   methods: {
-    ...Vuex.mapActions(['getCommuneById']),
+    ...Vuex.mapActions(['getCommuneById', 'getCommuneClaimsById']),
     cardModal() {
       this.isComponentModalActive = true;
     },

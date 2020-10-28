@@ -31,7 +31,7 @@
     </div>
     <div class="card-container">
       <div class="columns is-multiline" >
-        <div class="column is-3 is-column-commune" v-for='(filteredCommune, index) in filteredCommunes' :key='index'>
+        <div class="column is-3 is-column-commune" v-for='(filteredCommune, index) in filteredCommunes' :key="filteredCommune.id+'id'+index">
           <div class="card mb-6" @click='goToCommune(filteredCommune.id)'>
             <div class="card-image">
               <figure class="image is-3by2">
