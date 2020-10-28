@@ -1,7 +1,7 @@
 import Vue from "vue";
 import VueRouter from "vue-router";
 import CommuneFiltered from '@/views/CommuneFiltered.vue';
-import CommunesList from '@/components/CommunesList.vue';
+import communesList from '@/components/communesList.vue';
 import Claims from '@/views/Claims.vue';
 import SearchClaim from '@/components/searchClaim.vue';
 
@@ -11,7 +11,7 @@ const routes = [
   {
     path: "/",
     name: "Home",
-    component: CommunesList
+    component: communesList
   },
   {
     path: "/comuna/:id",

@@ -58,6 +58,9 @@ export default {
   created() {
     this.getCommuneClaimsById(this.$route.params.id);
   },
+  beforeDestroy() {
+    this.getCommuneClaimsById();
+  },
   methods: {
     ...Vuex.mapActions(['getCommuneClaimsById']),
   },
